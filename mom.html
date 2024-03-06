@@ -1,0 +1,2498 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Mobile Operation Module - Isolated Mode
+        </title>
+        <meta property="og:title title" content="Mobile Operation Module - Isolated Mode">
+        <meta property="og:description description" content="This is an isolated version of the Mobile Operation Module with only what be needed to have the Mobile Operation Module Run Properly Included.">
+        <meta property="og:author author" content="Gabriel Bautista Lazaro">
+        <style>
+            /* The most basic accessibility options for accessibility */
+            body, button {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                transition: all 0.1s ease-in-out;
+            }
+
+            button {
+                border-radius: 0;
+                border: solid black 0.05cm;
+                cursor: pointer;
+            }
+
+            button:focus {
+                outline: solid skyblue 0.05cm;
+                box-shadow: 0 0 0 0.05cm black;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: black;
+                    color: white;
+                }
+
+                button {
+                    border-color: grey;
+                    background: black;
+                    color: white;
+                }
+
+                button:hover {
+                    background-color: #2a2a2a;
+                }
+            }
+
+            @media (prefers-color-scheme: light) {
+                body {
+                    background-color: white;
+                    color: black;
+                }
+
+                button {
+                    border-color: black;
+                    background: white;
+                    color: black;
+                }
+
+                button:hover {
+                    background-color: #d9dee6;
+                }
+            }   
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>
+                Mobile Operation Module - Isolated Mode
+            </h1>
+            <p>
+                This is an isolated version of the Mobile Operation Module. This version contains only what is needed for the MOM to run. Press Shift+F10 to activate the MOM. You can also press the button below to open the mom.
+            </p>
+            <br>
+            <button onclick="revive(document.getElementById('mydiv'));" ontouchstart="revive(document.getElementById('mydiv'));" title="Open Mobile Operation Module" id="button">
+                Open Mobile Operation Module
+            </button>
+        </main>
+        <!-- The MOM -->
+        <footer id="mom" desc="Mobile Operation Module">
+            <!-- The MOM was created by Gabriel Lazaro as a possible way to implament a debug menu for mobile users without relying on external extensions. -->
+            <script>
+                // MOM stands for Mobile Operation Module
+                console.log("The MOM has been deployed. Please wait...");
+
+                // While MOM is degisned to be mobile, it needs to be slightly configured per site.
+                // You as the injector must decide how the MOM will interact with your site. 
+                // While not listed as part of the configuration variable, you will need to implament a way for mobile users to activate the MOM.
+
+                // Per-Site Configuration
+
+                // Where to redirect keyboard users when finished using the MOM
+                var exit = document.getElementById("button");
+
+                // The following code is a template that is known to work for activating the MOM:
+                /*
+                <button onclick="revive(document.getElementById('mydiv'));" ontouchstart="revive(document.getElementById('mydiv'));">
+                    Click here to activate the MOM.     
+                </button>
+                */
+
+
+
+                // Fallback code if the copypaster forgets to read:
+            </script>
+            <style>
+                /* 
+                The Mobile Operation Module was based off of the Single-Window AWAPI.
+                Any external dependencies that the SWAWAPI had were removed.
+
+                Thank you so much for integrating the MOM in your project. 
+                */
+                #mom, #mom button{
+                    font-family: "Segoe UI", Lucida, Helvetica, sans-serif;
+                }
+
+                #mom table {
+                    border-spacing: 0;
+                }
+                
+                #mom button{
+                    cursor: pointer;
+                    /* border-radius: 0.2rem; */
+                    color: white;
+                    font-size: 9pt;
+                    padding: 0.2rem 1rem;
+                    border: 0.1rem solid #77777777;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3) inset;
+                    text-shadow: none;
+                    border-radius: 0;
+                    margin: 0;
+                }
+
+                #mom button {
+                    background: linear-gradient(to top, rgba(47,47,77,1) 0%, rgba(71,71,101,1) 50%, rgba(85,85,115,1) 50%, rgba(92,92,122,1) 100%);
+                }
+                
+                #mom button:hover, #mom button:focus {
+                    background: linear-gradient(to top, rgba(27,27,57,1) 0%, rgba(51,51,81,1) 50%, rgba(65,65,95,1) 50%, rgba(72,72,102,1) 100%);
+                    
+                }
+                
+                #mom button:active {
+                    background: linear-gradient(to top, rgba(07,07,37,1) 0%, rgba(21,21,51,1) 50%, rgba(35,35,65,1) 50%, rgba(42,42,72,1) 100%);
+                }
+                
+                #mydiv {
+                    box-shadow: 0 0 0.3rem black !important;
+                    background: radial-gradient(circle at left top, rgba(255,255,255,0.3) 0%, transparent 10rem), radial-gradient(circle at right top, rgba(255,255,255,0.3) 0%, transparent 10rem), linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) calc(1.9rem + 1%), rgba(255,255,255,0.1) calc(1.9rem + 5%), rgba(255,255,255,0.4) calc(1.9rem + 34%), transparent calc(1.9rem + 35%), transparent 100%);
+                    background-color: #AABBFF30;
+                    border-radius: 0.4rem;
+                    position: fixed;
+                    z-index: 9;
+                    top:0;
+                    background-attachment: scroll;
+                    text-align: center;
+                    border: 0.1rem solid #77777777;
+                    backdrop-filter: blur(3pt);
+                    -webkit-backdrop-filter: blur(3pt);
+                    background-blend-mode: none;
+                    width: 10cm;
+                    padding: 0.4rem 0.4rem;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3) inset;
+                    opacity: 1;
+                    transform: perspective(10cm) rotateX(0deg) rotateY(0deg) scale(1);
+                    transition-property: opacity, transform;
+                    transition-duration: 0.25s;
+                    transition-timing-function: cubic-bezier(0,0,0.5,1);
+                    display: block;
+                    
+                }
+                
+                p{margin: 0;}
+                #mydivheader {
+                    padding: 0;
+                    font-size: 9.25pt;
+                    cursor: move;
+                    padding-bottom: 0.25rem;
+                    z-index: 10;
+                    color: #fff;
+                }
+                
+                #mydivheader span{
+                    
+                    white-space: nowrap;
+                    display: inline-block;
+                    text-overflow: ellipsis;
+                    width: calc(100% - 8.7rem);
+                    
+                }
+                
+                
+                .icond{
+                    height: 1rem;
+                    width: 1rem;
+                    display: inline-block;
+                    padding-right: 0.1rem;
+                    cursor: pointer;
+                }
+                .subhead > span{
+                    position: absolute;
+                    top: 0;
+                    padding-left: 1.3rem;
+                    display: block;
+                    padding-top: 0.4rem;
+                    height: 1.4rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                
+                .subhead{
+                    color: black;
+                    display: contents;
+                    text-shadow: 0 0 1rem #FFFFFF, 0 0 1rem #FFFFFF;
+                }
+                @keyframes death{
+                    from{
+                        opacity: 1;
+                    }
+                    to{
+                        opacity: 0.5;
+                    }
+                }
+                #cbt > td{
+                    position: relative;
+                    cursor: pointer;
+                }
+                #cbt > td {
+                    border:solid #77777777 0.1rem;
+                    border-right: none;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.1) inset;
+                    text-align: center;
+                    vertical-align: center;
+                    width: 1.5rem;
+                    font-size: 7.25pt;
+                    text-shadow: 0 0 0 white;
+                    transition: all 0.5s linear;
+                }
+                #cbt > td:hover{
+                    text-shadow: 0 0 0.5rem white;
+                }
+                
+                #cbt > td:first-child{/*i do believe that there is a discrete test shadow here so add it. also there the effect becomes very intense on hover*/
+                    border-radius: 0 0 0 0.2rem;
+                    border: solid #77777777 0.1rem;
+                    border-right: none;
+                }
+                
+                #cbt > td:last-child{
+                    border-radius: 0 0 0.2rem 0;
+                    border: solid #77555555 0.1rem;
+                    width: 2.75rem;
+                    text-shadow: 0 0 0 red;
+                    transition: all 0.25s linear;
+                }
+                .ctrl{
+                    display:absolute;
+                }
+                
+                .ctrl:last-child .grad1{
+                    border-radius: 0 0 0.2rem 0;
+                    background-image: radial-gradient(circle at bottom, rgba(255,138,128,0.6) 0%, transparent 100%),  linear-gradient(0deg, rgba(174,109,104,1) 0%, rgba(122,26,18,1) 50%, rgba(183,114,110,1) 50%, rgba(207,161,161,1) 100%); 
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top:0;
+                    opacity: 1;
+                    left: 0;
+                    transition: opacity 0.1s ease-out;
+                    z-index: -1;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3) inset;
+                }
+                .ctrl:last-child:active {
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.7) inset;
+                    background-image: radial-gradient(circle at top, rgba(255, 138, 128, 0.7) 0%, transparent 100%), radial-gradient(circle at bottom, rgba(255,238,119,0.7) 0%, transparent 61%), linear-gradient(0deg, rgba(154, 69, 64, 1) 0%, rgba(102,0,0,1) 50%, rgba(163,74,70,1) 50%, rgba(187,121,121,1) 100%);
+                }
+                .ctrl:last-child:hover .grad1{
+                    opacity: 0;
+                    transition: opacity 0.1s ease-in;
+                  
+                  
+                }
+                .ctrl:last-child .grad2{/*I bet microsoft's code is just as messy as this. oh wait, I actually fixed a visual bug in this html version that their window had by going the extra mile to make the "x" in the window button seperate*/
+                    border-radius: 0 0 0.2rem 0;
+                    background-image: radial-gradient(circle at top, rgba(255,138,128,0.7) 0%, transparent 100%), radial-gradient(circle at bottom, rgba(255,238,118,0.5) 0%, transparent 61%), linear-gradient(0deg, rgba(194,109,104,1) 0%, rgba(142,26,18,1) 50%, rgba(203,114,110,1) 50%, rgba(227,161,161,1) 100%);
+                
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: 0 0 0.5rem 0.1rem rgba(255, 80, 0, 0.75), 0 0 0 0.07rem rgba(255, 255, 255, 0.3) inset;
+                  position: absolute;
+                  top:0;
+                    opacity: 0;
+                    left: 0;
+                    transition: opacity 0.1s ease-in;
+                    
+                    z-index: -1;
+                    overflow:visible;
+                    clip-path: none;
+                    
+                }
+                .ctrl:last-child:hover .grad2{
+                    opacity: 1;
+                
+                    transition: opacity 0.1s ease-out;
+                    
+                }
+                .ctrl .grad1{
+                    background-image: radial-gradient(circle at bottom, rgba(178,178,178,0.5) 0%, transparent 100%), linear-gradient(0deg, rgba(144,144,149,0.5) 0%, rgba(92,96,88,0.5) 50%, rgba(180,180,184,0.5) 50%, rgba(201,201,201,0.5) 100%);
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top:0;
+                    opacity: 1;
+                    box-shadow: 0 0 0 0.07rem #FFFFFA0 inset;
+                    left: 0;
+                    transition: opacity 0.1s ease-out;
+                    z-index: -1;
+                    
+                }
+                .ctrl:hover .grad1{
+                    opacity: 0;
+                    transition: opacity 0.1s ease-in;
+                }
+                .ctrl .grad2{
+                    background-image: radial-gradient(circle at bottom, rgba(58,228,255,0.7) 0%, transparent 100%), radial-gradient(circle at top, rgba(118,238,255,0.5) 0%, transparent 61%), linear-gradient(0deg, rgba(104,149,194,1) 0%, rgba(26,58,142,1) 50%, rgba(104,160,203,1) 50%, rgba(161,211,227,1) 100%);
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top:0;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3) inset, 0 0 0.5rem 0.1rem rgba(0, 192, 255, 0.7529);
+                    opacity: 0;
+                    left: 0;
+                    z-index: -1;
+                    transition: opacity 0.1s ease-in;
+                    clip-path: none;
+                    
+                }
+                .ctrl:active{
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.7) inset;
+                    background-image: radial-gradient(circle at bottom, rgba(58,228,255,1) 0%, transparent 100%), radial-gradient(circle at top, rgba(118,238,255,1) 0%, transparent 61%), linear-gradient(0deg, rgba(69,89,114,1) 0%, rgba(0,18,82,1) 50%, rgba(64,100,163,1) 50%, rgba(121,171,187,1) 100%);
+                }
+                .ctrl:hover .grad2{
+                    opacity: 1;
+                    transition: opacity 0.1s ease-out;
+                    
+                }
+                .ctrl:first-child .grad1, .ctrl:first-child .grad2{
+                    border-radius: 0 0 0 0.2rem;
+                }
+
+                #fade:before{
+                    content:"";
+                    position: absolute;
+                    width: 300%;
+                    height: 300%;
+                    top: -50%;
+                    left: -50%;
+                    z-index: -1;
+                    transform: rotate(-35deg);
+                }
+                #fade{
+                    background-image: repeating-linear-gradient(90deg, rgba(214,214,214,0.5) 0cm, rgba(222,222,222,0.7) 0.6cm, rgba(249,249,249,0.8) 2.4cm, rgba(252,252,252,0.9) 4.2cm, rgba(217,217,217,0.4) 6cm, rgba(217,217,217,0.4) 6.4cm, rgba(248,248,248,0.8) 6.6cm, rgba(220,220,220,0.4) 7.4cm, rgba(214,214,214,0.4) 7.8cm, rgba(219,219,219,0.45) 8.2cm, rgba(249,249,249,0.7) 8.8cm, rgba(249,249,249,0.7) 9.6cm, rgba(214,214,214,0.4) 10.6cm, rgba(214,214,214,0.4) 13cm, rgba(249,249,249,0.7) 14.2cm, rgba(249,249,249,0.7) 17cm, rgba(214,214,214,0.4) 20cm);
+                    background-repeat: repeat;
+                    border-radius: 0.5rem 0.5rem 0 0;
+                    mask-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.3) 90%, rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%);
+                    -webkit-mask-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%,  rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.3) 90%,rgba(0,0,0,0) 95%, rgba(0,0,0,0) 100%);
+                    background-attachment: fixed;
+                    width: 100%;
+                    z-index:-1;
+                    height: 1.9rem;
+                    position: absolute;
+                    left: 0;
+                    top: 0pt;
+                }
+                #content{
+                    border: 0.1rem solid #77777777;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3);
+                    background: white;
+                    color: black;
+                    z-index: 4;
+                    padding: 0;
+                    margin: 0;
+                    overflow: auto;
+                    height: calc(100% - 1.75rem - 31px);
+                }
+                #text {
+                    display: flex;
+                    justify-content: space-between;
+                    height:100%;
+                    width: calc(100% - 4rem);
+                }
+                #ctrl, #right{
+                    vertical-align: top;
+                }
+                #ctrl{
+                    border: solid rgba(255,255,255,0.3) 0.1rem;
+                    border-top: none;
+                    position: absolute;
+                    top: 0.0rem;
+                    right: 0.5rem;
+                    border-radius: 0 0 0.25rem 0.25rem;
+                    z-index: 1;
+                }
+                .top, .down, .left, .right, .topleft, .downleft, .topright, .downright{
+                    position: absolute;
+                    z-index: 0;
+                }
+                .top, .down{
+                    cursor:ns-resize;
+                    min-width: calc(100% - 0.8rem);
+                    height: 0.4rem;
+                }
+                .left, .right{
+                    cursor: ew-resize;
+                    min-height: calc(100% - 0.8rem);
+                    width: 0.4rem;
+                }
+                .topleft, .downright{
+                    cursor: nwse-resize;
+                }
+                .topright, .downleft{
+                    cursor: nesw-resize;
+                }
+                .topleft, .downright, .topright, .downleft{
+                    min-width: 0.4rem;
+                    min-height: 0.4rem;
+                }
+                .top{
+                    top: 0;
+                }
+                .down{
+                    bottom: 0;
+                }
+                .left{
+                    left: 0;
+                    top: 0.4rem;
+                }
+                .right{
+                    right: 0;
+                    top: 0.4rem;
+                }
+                .topleft{
+                    top:0;
+                    left:0;
+                    border-radius: 0.4rem 0 0 0;
+                }
+                .topright{
+                    top:0;
+                    right:0;
+                    border-radius: 0 0.4rem 0 0;
+                }
+                .downright{
+                    bottom:0;
+                    right: 0;
+                    border-radius: 0 0 0.4rem 0;
+                }
+                .downleft{
+                    bottom:0;
+                    left:0;
+                    border-radius: 0 0 0 0.4rem;
+                }
+
+                @keyframes menu-console {
+                    0% {
+                        border-color: black;
+                        outline: solid darkblue 0.1rem;
+                        outline-offset: -0.05rem;
+                    }
+                    20% {
+                        border-color: skyblue;
+                        outline-offset: -0.025rem;
+                    }
+                    40% {
+                        border-color: white;
+                        outline: solid skyblue 0.1rem;
+                        outline-offset: 0rem;
+                    }
+                    60% {
+                        border-color: white;
+                        outline: solid skyblue 0.1rem;
+                        outline-offset: 0rem;
+                    }
+                    80% {
+                        border-color: skyblue;
+                        outline-offset: -0.025rem;
+                    }
+                    100% {
+                        border-color: black;
+                        outline: solid darkblue 0.1rem;
+                        outline-offset: -0.05rem;
+                    }
+                }
+
+                
+                #base {
+                    list-style: none;
+                }
+
+                #content {
+                    background-color: black;
+                }
+                
+                #enviar {
+                    display: flex;
+                    width: calc(100% - 0.95rem);
+                    position: absolute;
+                    /* bottom: 0.35rem; */
+                    top: calc(100% - 2.5rem);
+                    left: 0.4rem;
+                    background-color: black;
+                    border-top: solid white 0.05rem;
+                    border: 0.1rem solid #77777777;
+                    box-shadow: 0 0 0 0.07rem rgba(255,255,255,0.3);
+                }
+
+                
+
+                .lo {
+                    list-style: none;
+                }
+                
+                .log {
+                    color: white;
+                }
+                
+                .log:nth-child(odd) {
+                    background: black;
+                }
+                
+                .log:nth-child(even) {
+                    background: #111111;
+                }
+                
+                .logi {
+                    color: white;
+                    font-weight: bold;
+                }
+
+                .logi:nth-child(odd) {
+                    background: blue;
+                }
+                
+                .logi:nth-child(even) {
+                    background: darkblue;
+                }
+
+                #base {
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .logw {
+                    color: black;
+                }
+
+                .logw:nth-child(odd) {
+                    background: gold;
+                }
+                
+                .logw:nth-child(even) {
+                    background: yellow;
+                }
+                
+                .loge {
+                    color: white;
+                    text-shadow: 0 0 0.1rem black;
+                }
+                
+                .loge:nth-child(odd) {
+                    background: red;
+                }
+                
+                .loge:nth-child(even) {
+                    background: darkred;
+                }
+
+                #bug {
+                    width: -webkit-fill-available;
+                    min-height: 1.2rem;
+                    height: 23px;
+                    resize: none !important;
+                    max-height: 100vh;
+                }
+                
+                #bug:focus, #le-sendin:focus {
+                    animation-name: menu-console;
+                    animation-duration: 1s;
+                    animation-iteration-count: infinite;
+                    animation-timing-function: linear;
+                    outline: none;
+                }
+                
+                #bug {
+                    resize: vertical;
+                    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, "sans-undertale", sans-serif;
+                    background-color: black;
+                    color: white
+                }
+                
+                @media (prefers-color-scheme: light) {
+                    #bug {
+                        background-color: white;
+                        color: black
+                    }
+                    .log {
+                        color: black;
+                    }
+                    
+                    .log:nth-child(odd) {
+                        background: white;
+                    }
+
+                    .log:nth-child(even) {
+                        background: #EEEEEE;
+                    }
+
+                    .logi {
+                        color: black;
+                    }
+                    
+                    .logi:nth-child(odd) {
+                        background: skyblue;
+                    }
+
+                    .logi:nth-child(even) {
+                        background: cyan;
+                    }
+
+                    .logw {
+                        color: black;
+                    }
+                    #content, #enviar {
+                        background-color: white;
+                    }
+                    #mom button {
+                        color: black;
+                        background: linear-gradient(to top, rgba(207,207,207,1) 0%, rgba(221,221,221,1) 50%, rgba(235,235,235,1) 50%, rgba(242,242,242,1) 100%);
+                    }
+                    
+                    #mom button:hover, #mom button:focus {
+                        background: linear-gradient(to top, rgba(187,187,207,1) 0%, rgba(201,201,221,1) 50%, rgba(215,215,235,1) 50%, rgba(222,222,242,1) 100%);
+                        
+                    }
+                    
+                    #mom button:active {
+                        background: linear-gradient(to top, rgba(147,147,207,1) 0%, rgba(171,171,221,1) 50%, rgba(185,185,235,1) 50%, rgba(192,192,242,1) 100%);
+    
+                    }
+
+                }
+
+                @media (prefers-reduced-motion) {
+                    body, #mydiv, .ctrl, #cbt > div, body:hover, #mydiv:hover, .ctrl:hover, #cbt > div:hover, body:active, #mydiv:active, .ctrl:active, #cbt > div:active, .grad1, .grad2 {
+                        animation: none !important;
+                        transition: none !important;
+                    }
+                    @keyframes menu-console {
+                        0% {
+                            border-color: white;
+                            outline: solid skyblue 0.1rem;
+                            outline-offset: 0rem;
+                        }
+                        100% {
+                            border-color: white;
+                            outline: solid skyblue 0.1rem;
+                            outline-offset: 0rem;
+                        }
+                    }
+                }
+
+                @media (prefers-contrast: more) or (-ms-high-contrast: active) {
+                    #mydiv {
+                        background: purple !important;
+                        border: solid cyan !important;
+                        box-shadow: none !important;
+                    }
+
+                    .ctrl > div {
+                        padding: 0 !important;
+                        background: black !important;
+                        box-shadow: none !important;
+                        transition: all 0.25s ease-out;
+                    }
+
+                    .ctrl {
+                        padding: 0 !important;
+                    }
+
+                    #mydiv button {
+                        background: black !important;
+                        box-shadow: none !important;
+                        color: white !important;
+                        transition: all 0.25s ease-out;
+                    }
+                    
+                    #mydiv button:hover {
+                        color: white !important;
+                        background: blue !important;
+                        transition: all 0.25s ease-out;
+                    }
+                    
+                    #mydiv button:active {
+                        background: cyan !important;
+                        color: white !important;
+                        transition: all 0.25s ease-out`!important;
+                    }
+
+                    .ctrl > div:hover {
+                        background: blue !important;
+                        transition: all 0.25s ease-out !important;
+                    }
+                    
+                    .ctrl > div:active {
+                        background: gold !important;
+                        border: solid cyan 0.1rem !important;
+                        transition: all 0.25s ease-out !important;
+                    }
+
+                    #content {
+                        box-shadow: none !important;
+                        border: solid cyan 0.1rem; 
+                    }
+
+                    #fade {
+                        display: none !important;
+                    }
+
+                    .subhead {
+                        color: white !important;
+                        text-shadow: none !important;
+                    }
+
+                    ::-webkit-scrollbar {
+                        background: black;
+                        border: solid white !important;
+                    }
+
+                    ::-webkit-scrollbar:hover {
+                        background: purple;
+                    }
+
+                    ::-webkit-scrollbar-thumb {
+                        border: solid white !important;
+                        box-shadow: none !important;
+                        background: black !important;
+                    }
+                    ::-webkit-scrollbar-thumb:hover {
+                        background-color: cyan !important;
+                    }
+                    
+                    ::-webkit-scrollbar-button:single-button {
+                        background: no-repeat black !important;
+                        border: solid white !important;
+                    }
+                    
+                    ::-webkit-scrollbar-button:single-button:hover {
+                        background-color: yellow !important;
+                    }
+                }
+            </style>
+            <div id="mydiv" style="top:30px;left:40px;width:400px;height:300px;opacity:0;display:none;">
+            
+                <div id="mydivheader" >
+                        <div  id="fade" oncontextmenu="alert('Press escape to exit the window.');return false;"><!-- And enter "clearMOM();" without quotes to clean the MOM. --></div>
+                    <div id="text">
+                        <div  class="subhead" align="left">
+                            <svg class="icond"
+   width="85.246109mm"
+   height="41.173302mm"
+   viewBox="0 0 85.246109 41.173302"
+   sodipodi:docname="Windows 7 Disc.svg">
+<!-- That's right; I have HARD-CODED a VECTOR into the MOM. Yes, I am aware that is the reason this module may add 20 seconds to the loading time. (Assuming that you have a good Dial-Up Connection.) -->
+  <!-- <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.9899495"
+     inkscape:cx="226.12067"
+     inkscape:cy="165.18089"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:window-width="1561"
+     inkscape:window-height="918"
+     inkscape:window-x="795"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     showguides="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" /> -->
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5086">
+      <stop
+         style="stop-color:#d5d5d5;stop-opacity:1"
+         offset="0"
+         id="stop5082" />
+      <stop
+         style="stop-color:#444444;stop-opacity:1"
+         offset="1"
+         id="stop5084" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5074">
+      <stop
+         style="stop-color:#fafafa;stop-opacity:1"
+         offset="0"
+         id="stop5070" />
+      <stop
+         id="stop5080"
+         offset="0.48269501"
+         style="stop-color:#b9b8b8;stop-opacity:1" />
+      <stop
+         style="stop-color:#fafafa;stop-opacity:1"
+         offset="1"
+         id="stop5072" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5054">
+      <stop
+         style="stop-color:#787878;stop-opacity:1"
+         offset="0"
+         id="stop5050" />
+      <stop
+         style="stop-color:#cacaca;stop-opacity:1"
+         offset="1"
+         id="stop5052" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5018">
+      <stop
+         style="stop-color:#c0c0c0;stop-opacity:1"
+         offset="0"
+         id="stop5014" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1"
+         id="stop5016" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5004"
+       inkscape:collect="always">
+      <stop
+         id="stop5000"
+         offset="0"
+         style="stop-color:#9a9a9c;stop-opacity:1" />
+      <stop
+         id="stop5002"
+         offset="1"
+         style="stop-color:#c2c2c2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4950">
+      <stop
+         style="stop-color:#969696;stop-opacity:1"
+         offset="0"
+         id="stop4946" />
+      <stop
+         id="stop4954"
+         offset="0.23844163"
+         style="stop-color:#b1b6be;stop-opacity:1" />
+      <stop
+         style="stop-color:#f0f9ff;stop-opacity:1"
+         offset="0.52738529"
+         id="stop4956" />
+      <stop
+         id="stop4958"
+         offset="0.76527637"
+         style="stop-color:#d9dee6;stop-opacity:1" />
+      <stop
+         style="stop-color:#ebebeb;stop-opacity:1"
+         offset="1"
+         id="stop4948" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4929">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4925" />
+      <stop
+         style="stop-color:#d3d3d1;stop-opacity:0.23979592"
+         offset="1"
+         id="stop4927" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4921">
+      <stop
+         style="stop-color:#cacccc;stop-opacity:1"
+         offset="0"
+         id="stop4917" />
+      <stop
+         style="stop-color:#fbfbfb;stop-opacity:1"
+         offset="1"
+         id="stop4919" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4911">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4907" />
+      <stop
+         style="stop-color:#d0d0d0;stop-opacity:0.39285713"
+         offset="1"
+         id="stop4909" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4901">
+      <stop
+         style="stop-color:#2a2a2a;stop-opacity:1"
+         offset="0"
+         id="stop4897" />
+      <stop
+         style="stop-color:#bebebe;stop-opacity:1"
+         offset="1"
+         id="stop4899" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4883">
+      <stop
+         style="stop-color:#ebebeb;stop-opacity:1"
+         offset="0"
+         id="stop4877" />
+      <stop
+         id="stop4879"
+         offset="0.44201782"
+         style="stop-color:#dadada;stop-opacity:1" />
+      <stop
+         style="stop-color:#b2b2b2;stop-opacity:1;"
+         offset="0.6570242"
+         id="stop4885" />
+      <stop
+         style="stop-color:#8a8a8a;stop-opacity:1"
+         offset="1"
+         id="stop4881" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient4815"
+       inkscape:collect="always">
+      <stop
+         id="stop4809"
+         offset="0"
+         style="stop-color:#ebebeb;stop-opacity:1" />
+      <stop
+         style="stop-color:#dadada;stop-opacity:1"
+         offset="0.44201782"
+         id="stop4811" />
+      <stop
+         id="stop4813"
+         offset="1"
+         style="stop-color:#8a8a8a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4798">
+      <stop
+         style="stop-color:#ebebeb;stop-opacity:1"
+         offset="0"
+         id="stop4794" />
+      <stop
+         id="stop4802"
+         offset="0.4378202"
+         style="stop-color:#b5b5b5;stop-opacity:1;" />
+      <stop
+         style="stop-color:#8a8a8a;stop-opacity:1"
+         offset="1"
+         id="stop4796" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="Frente-disco">
+      <stop
+         style="stop-color:#cbcbcf;stop-opacity:1"
+         offset="0"
+         id="stop4631" />
+      <stop
+         id="stop4639"
+         offset="0.47814545"
+         style="stop-color:#e9e9f3;stop-opacity:1" />
+      <stop
+         style="stop-color:#e8e8f2;stop-opacity:1"
+         offset="0.54781061"
+         id="stop4641" />
+      <stop
+         style="stop-color:#b2b2b3;stop-opacity:1"
+         offset="1"
+         id="stop4633" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4584">
+      <stop
+         style="stop-color:#d1d1d1;stop-opacity:1"
+         offset="0"
+         id="stop4580" />
+      <stop
+         style="stop-color:#929292;stop-opacity:0"
+         offset="1"
+         id="stop4582" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4572">
+      <stop
+         style="stop-color:#c6c6c6;stop-opacity:1"
+         offset="0"
+         id="stop4568" />
+      <stop
+         style="stop-color:#f5f3f1;stop-opacity:1"
+         offset="1"
+         id="stop4570" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4572"
+       id="linearGradient4574"
+       x1="83.92263"
+       y1="51.145435"
+       x2="68.956932"
+       y2="49.917828"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,10.583333)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient4586"
+       x1="65.479561"
+       y1="50.684845"
+       x2="85.010735"
+       y2="52.555729"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0,10.583333)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4572"
+       id="linearGradient4624"
+       gradientUnits="userSpaceOnUse"
+       x1="83.92263"
+       y1="51.145435"
+       x2="68.956932"
+       y2="49.917828"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient4626"
+       gradientUnits="userSpaceOnUse"
+       x1="65.479561"
+       y1="50.684845"
+       x2="85.010735"
+       y2="52.555729"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#Frente-disco"
+       id="linearGradient4637"
+       x1="63.877975"
+       y1="54.7645"
+       x2="78.808037"
+       y2="55.378712"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#Frente-disco"
+       id="linearGradient4645"
+       gradientUnits="userSpaceOnUse"
+       x1="63.877975"
+       y1="54.7645"
+       x2="78.808037"
+       y2="55.378712"
+       gradientTransform="matrix(0.96094196,0,0,0.9413771,2.8048589,3.3017581)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4705"
+       x="-0.88692737"
+       width="2.7738547"
+       y="-0.17191029"
+       height="1.3438206">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.03785446"
+         id="feGaussianBlur4707" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4732"
+       x="-0.17109436"
+       width="1.3421887"
+       y="-0.039968874"
+       height="1.0799377">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.067878122"
+         id="feGaussianBlur4734" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient4742"
+       gradientUnits="userSpaceOnUse"
+       x1="65.479561"
+       y1="50.684845"
+       x2="85.010735"
+       y2="52.555729"
+       gradientTransform="matrix(3.7795276,0,0,3.7795276,0,-39.999999)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient4749"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.7795276,0,0,3.7795276,0,-100)"
+       x1="65.479561"
+       y1="50.684845"
+       x2="85.010735"
+       y2="52.555729" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient4760"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.7795276,0,0,3.7795276,0,-99.999999)"
+       x1="65.479561"
+       y1="50.684845"
+       x2="85.010735"
+       y2="52.555729" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4798"
+       id="linearGradient4800"
+       x1="81.21653"
+       y1="37.013557"
+       x2="82.820145"
+       y2="39.886707"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(3.7795276)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4815"
+       id="linearGradient4807"
+       gradientUnits="userSpaceOnUse"
+       x1="81.016075"
+       y1="36.712879"
+       x2="82.319016"
+       y2="38.884445"
+       gradientTransform="translate(0,-15.875)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4883"
+       id="linearGradient4859"
+       gradientUnits="userSpaceOnUse"
+       x1="81.086945"
+       y1="36.807373"
+       x2="82.33503"
+       y2="39.065094"
+       gradientTransform="translate(-61.799107,-30.238095)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4873"
+       x="-0.045706883"
+       width="1.0914139"
+       y="-0.050535362"
+       height="1.1010706">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.17627541"
+         id="feGaussianBlur4875" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4815"
+       id="linearGradient4889"
+       x1="81.253815"
+       y1="37.170555"
+       x2="82.851952"
+       y2="39.68935"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-96.949843)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4911"
+       id="linearGradient4913"
+       x1="72.367706"
+       y1="41.358456"
+       x2="71.868118"
+       y2="46.319389"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4921"
+       id="linearGradient4923"
+       x1="83.397552"
+       y1="42.334717"
+       x2="80.438713"
+       y2="38.287464"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.683101,-224.77963,-117.34574)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4929"
+       id="linearGradient4931"
+       x1="83.300156"
+       y1="47.441799"
+       x2="83.138428"
+       y2="51.381035"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.683101,-229.65206,-156.62857)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4950"
+       id="linearGradient4952"
+       x1="83.957962"
+       y1="29.298353"
+       x2="70.587051"
+       y2="29.085743"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4950"
+       id="linearGradient4966"
+       gradientUnits="userSpaceOnUse"
+       x1="83.957962"
+       y1="29.298353"
+       x2="70.587051"
+       y2="29.085743"
+       gradientTransform="matrix(3.6492176,0,0,3.6836501,-207.381,-77.477213)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5004"
+       id="linearGradient4998"
+       x1="83.604996"
+       y1="50.441257"
+       x2="83.697121"
+       y2="50.109764"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4584"
+       id="linearGradient5010"
+       gradientUnits="userSpaceOnUse"
+       x1="71.810661"
+       y1="47.377552"
+       x2="77.262222"
+       y2="53.075447" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5018"
+       id="linearGradient5020"
+       x1="76.048363"
+       y1="53.049992"
+       x2="74.187866"
+       y2="48.785728"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5054"
+       id="linearGradient5056"
+       x1="67.610489"
+       y1="51.091045"
+       x2="67.699081"
+       y2="51.415867"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4901"
+       id="linearGradient5066"
+       gradientUnits="userSpaceOnUse"
+       x1="72.682945"
+       y1="50.994999"
+       x2="68.745247"
+       y2="58.437592"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5074"
+       id="linearGradient5076"
+       x1="77.758812"
+       y1="40.700962"
+       x2="64.002296"
+       y2="38.971817"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-96.949843)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5086"
+       id="linearGradient5088"
+       x1="69.100578"
+       y1="48.553566"
+       x2="82.874435"
+       y2="59.723202"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.6831009,0,0,3.6831009,-210.22467,-155.41906)" />
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter5106"
+       x="-0.023385748"
+       width="1.0467715"
+       y="-0.02464739"
+       height="1.0492948">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.084088627"
+         id="feGaussianBlur5108" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     id="layer2"
+     inkscape:groupmode="layer"
+     style="display:inline"
+     transform="translate(-27.663028,-20.63133)">
+    <path
+       sodipodi:nodetypes="cczczccc"
+       inkscape:connector-curvature="0"
+       id="path3725"
+       d="M 69.985427,20.917721 29.5845,34.571632 c -2.500701,2.966144 -2.146523,13.180989 1.151396,15.567705 3.297919,2.386712 27.607145,8.119089 46.955152,11.366597 0,0 31.544452,-19.990799 33.462812,-22.239837 1.91836,-2.249041 2.05929,-9.175565 -0.16283,-12.565138 C 98.080954,23.786113 86.172085,21.743793 69.985435,20.917721 Z"
+       style="opacity:1;fill:#c7c7c7;fill-opacity:1;stroke:none;stroke-width:0.36831009;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4887"
+       d="M 110.99063,26.701541 C 99.778101,32.74864 88.565397,38.795198 77.351799,44.841852 l -1.14444,16.446717 1.483689,0.217323 c 0.703679,-0.454226 31.566972,-20.01756 33.463272,-22.240746 1.91836,-2.249042 2.05844,-9.174078 -0.16368,-12.563651 z"
+       style="opacity:1;fill:url(#linearGradient4889);fill-opacity:1;stroke:none;stroke-width:0.36831009;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="ccccscc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4857"
+       d="m 25.414173,3.3345331 c -3.04432,1.641851 -6.088684,3.283553 -9.133292,4.925282 l 0.188471,3.4463009 8.131889,-5.0746139 c 0.379211,-0.236642 0.585173,-0.260898 0.720978,-0.759324 0.16396,-0.601757 0.207422,-1.725415 0.09195,-2.537645 z"
+       style="opacity:1;fill:url(#linearGradient4859);fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4873)"
+       sodipodi:nodetypes="cccssc"
+       transform="matrix(3.6831009,0,0,3.6831009,17.38767,14.420116)" />
+    <path
+       style="opacity:1;fill:#e9e9e9;fill-opacity:1;stroke:none;stroke-width:0.36831009;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 110.88731,26.973593 -33.45069,17.937829 1.080129,2.10045 33.069631,-18.609059 c -0.10243,-0.680696 -0.38121,-1.136273 -0.69907,-1.42922 z"
+       id="path5058"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       sodipodi:nodetypes="szssssssss"
+       inkscape:connector-curvature="0"
+       id="path5068"
+       d="m 29.728126,34.901575 c -1.394087,0.98236 -1.828067,4.307342 -1.708425,7.268496 0.119664,2.961159 0.993347,6.499808 2.493036,7.905806 1.648957,1.545937 13.420313,4.271645 25.521671,7.494053 9.739002,2.593348 16.693901,4.185514 19.242807,3.602008 0.111515,-0.02553 2.138621,0.356334 2.224155,0.322733 1.6221,-0.637215 2.985637,-4.832952 2.784271,-8.809081 C 80.112277,49.262314 78.622284,45.203326 77.39516,44.720247 71.404651,42.361979 59.47677,39.432275 47.164327,37.14894 40.536882,35.919882 31.413413,33.714025 29.728126,34.901575 Z"
+       style="opacity:1;fill:url(#linearGradient5076);fill-opacity:1;stroke:none;stroke-width:0.81294668;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="opacity:1;fill:url(#linearGradient4624);fill-opacity:1;stroke:url(#linearGradient4626);stroke-width:0.29464808;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 69.98605,20.917415 -1.11724,0.376852 -38.861483,13.281199 c 16.121857,1.775542 33.048025,5.569835 47.883099,9.967561 L 110.99103,26.700959 C 96.617665,23.710469 81.748559,21.555958 69.98605,20.917415 Z"
+       id="path4566"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       sodipodi:nodetypes="cccccc"
+       inkscape:connector-curvature="0"
+       id="path5012"
+       d="m 69.98605,20.917415 -1.11724,0.376852 -38.861483,13.281199 c 16.121857,1.775542 33.048025,5.569835 47.883099,9.967561 L 110.99103,26.700959 C 96.617665,23.710469 81.748559,21.555958 69.98605,20.917415 Z"
+       style="opacity:1;fill:url(#linearGradient5020);fill-opacity:1;stroke:none;stroke-width:0.29464808;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <ellipse
+       style="opacity:1;fill:url(#linearGradient4923);fill-opacity:1;stroke:url(#linearGradient4931);stroke-width:0.31181934;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4915"
+       cx="77.583588"
+       cy="30.256865"
+       rx="23.009897"
+       ry="5.4562263"
+       transform="matrix(1,0,-0.12403475,0.99227787,0,0)" />
+    <path
+       style="opacity:1;fill:url(#linearGradient4966);fill-opacity:1;stroke:none;stroke-width:0.34762207;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 75.119081,24.607919 a 6.3731694,24.482752 89.529422 0 0 -0.220618,0.0019 5.4124196,22.808661 89.576239 0 1 21.959974,5.411882 5.4124196,22.808661 89.576239 0 1 -23.468602,5.41568 5.4124196,22.808661 89.576239 0 1 -22.127808,-5.41568 5.4124196,22.808661 89.576239 0 1 2.213916,-2.1796 6.3731694,24.482752 89.529422 0 0 -3.549058,3.140901 6.3731694,24.482752 89.529422 0 0 23.75147,6.376987 6.3731694,24.482752 89.529422 0 0 25.192208,-6.376987 6.3731694,24.482752 89.529422 0 0 -23.751468,-6.375083 z"
+       id="ellipse4933"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4960"
+       d="m 74.898448,24.60982 c -0.07421,5.48e-4 -0.148466,0.0012 -0.22268,0.0019 12.633979,0.0221 22.528854,2.437649 22.163874,5.411075 l 2.03081,0.961157 C 99.269369,27.463479 88.537417,24.609864 74.898448,24.60982 Z"
+       style="opacity:1;fill:url(#linearGradient4998);fill-opacity:1;stroke:none;stroke-width:0.34920618;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.97448707px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 72.024819,22.302136 -3.321225,0.886559 8.376756,0.93757 3.060131,-1.180894 z"
+       id="path4905"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <ellipse
+       ry="0.74088395"
+       rx="1.8329312"
+       cy="40.559166"
+       cx="76.983772"
+       id="ellipse5042"
+       style="opacity:1;fill:#909090;fill-opacity:1;stroke:#ffffff;stroke-width:0.26496652;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+    <path
+       id="path5044"
+       d="m 77.018717,40.260608 a 1.6630182,0.517524 0 0 0 -0.108504,0.0019 l 0.472023,1.020162 a 1.6630182,0.517524 0 0 0 1.299946,-0.504375 1.6630182,0.517524 0 0 0 -1.663479,-0.517697 z m -0.306434,0.0096 a 1.6630182,0.517524 0 0 0 -1.357049,0.508176 1.6630182,0.517524 0 0 0 1.663476,0.517697 1.6630182,0.517524 0 0 0 0.167507,-0.0037 z"
+       style="opacity:1;fill:#f5f3f1;fill-opacity:1;stroke:#ffffff;stroke-width:0.21093886;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       inkscape:connector-curvature="0" />
+    <ellipse
+       style="opacity:1;fill:url(#linearGradient5056);fill-opacity:1;stroke:#ffffff;stroke-width:0.26496652;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       id="ellipse5046"
+       cx="39.496265"
+       cy="33.578453"
+       rx="1.8329312"
+       ry="0.74088395" />
+    <path
+       inkscape:connector-curvature="0"
+       style="opacity:1;fill:#f5f3f1;fill-opacity:1;stroke:#ffffff;stroke-width:0.21093886;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       d="m 39.531185,33.279898 a 1.6630182,0.517524 0 0 0 -0.108504,0.0019 l 0.472023,1.02016 a 1.6630182,0.517524 0 0 0 1.299943,-0.504375 1.6630182,0.517524 0 0 0 -1.663476,-0.517696 z m -0.306434,0.0096 a 1.6630182,0.517524 0 0 0 -1.357049,0.508176 1.6630182,0.517524 0 0 0 1.66348,0.517697 1.6630182,0.517524 0 0 0 0.167507,-0.0037 z"
+       id="path5048" />
+    <path
+       style="opacity:1;fill:url(#linearGradient4637);fill-opacity:1;stroke:none;stroke-width:0.73662019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.674547,36.567419 c -1.314057,0.855673 -1.416179,3.865555 -1.303402,6.444841 0.112777,2.579287 0.994312,4.777365 2.407912,6.002048 1.554294,1.346571 12.649897,4.283479 24.056563,7.090323 9.581546,2.357733 19.122262,4.374161 21.045725,3.675922 1.528984,-0.555039 2.110664,-3.941868 1.920855,-7.405239 C 78.638781,49.393502 77.735732,46.297421 76.086119,45.555103 70.630217,43.099973 56.76069,40.19881 45.155059,38.209931 38.908071,37.139375 32.263086,35.533013 30.674547,36.567419 Z"
+       id="path4564"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="szsssssss" />
+    <path
+       sodipodi:nodetypes="szsssssss"
+       inkscape:connector-curvature="0"
+       id="path5062"
+       d="m 30.674547,36.567419 c -1.314057,0.855673 -1.416179,3.865555 -1.303402,6.444841 0.112777,2.579287 0.994312,4.777365 2.407912,6.002048 1.554294,1.346571 12.649897,4.283479 24.056563,7.090323 9.581546,2.357733 19.014932,4.163407 21.045725,3.912157 1.334254,-0.165074 2.110664,-4.178103 1.920855,-7.641474 C 78.638781,49.393502 77.735732,46.297421 76.086119,45.555103 70.630217,43.099973 56.76069,40.19881 45.155059,38.209931 38.908071,37.139375 32.263086,35.533013 30.674547,36.567419 Z"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:url(#linearGradient5066);stroke-width:0.73662019;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       sodipodi:type="inkscape:offset"
+       inkscape:radius="-0.19578134"
+       inkscape:original="M 65.40625 41.542969 C 65.04947 41.775293 65.022114 42.592666 65.052734 43.292969 C 65.083354 43.993272 65.323224 44.589361 65.707031 44.921875 C 66.129038 45.287483 69.141253 46.085569 72.238281 46.847656 C 74.83977 47.487805 77.430885 48.035282 77.953125 47.845703 C 78.36826 47.695004 78.526144 46.776278 78.474609 45.835938 C 78.430239 45.026345 78.184215 44.183969 77.736328 43.982422 C 76.254994 43.315829 72.48894 42.528282 69.337891 41.988281 C 67.641769 41.697614 65.837555 41.262117 65.40625 41.542969 z "
+       style="opacity:1;fill:none;fill-opacity:1;stroke:url(#linearGradient4913);stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4662"
+       d="m 65.958984,41.648438 c -0.241095,-0.0055 -0.409179,0.03507 -0.445312,0.05859 -0.09233,0.06012 -0.192054,0.26601 -0.236328,0.564453 -0.04427,0.298444 -0.04435,0.669384 -0.0293,1.013672 0.02888,0.660568 0.261092,1.205157 0.587891,1.488282 0.04502,0.03901 0.315743,0.176715 0.699218,0.3125 0.383475,0.135784 0.894047,0.291332 1.488282,0.460937 1.188469,0.33921 2.714301,0.730555 4.261718,1.111328 1.298675,0.319565 2.595321,0.614681 3.626953,0.806641 0.515817,0.09598 0.965071,0.16548 1.3125,0.199218 0.34743,0.03374 0.608771,0.01741 0.66211,-0.002 0.0951,-0.03452 0.231837,-0.231024 0.310547,-0.570312 0.07871,-0.339288 0.10701,-0.790311 0.08203,-1.246094 -0.02131,-0.388758 -0.09316,-0.785771 -0.207031,-1.097656 -0.113874,-0.311885 -0.272921,-0.523498 -0.416016,-0.587891 -1.420718,-0.639316 -5.206151,-1.439481 -8.351562,-1.978515 -0.852715,-0.146131 -1.728809,-0.328672 -2.4375,-0.4375 -0.354346,-0.05441 -0.667109,-0.09018 -0.908204,-0.0957 z"
+       transform="matrix(3.6831009,0,0,3.6831009,-210.22467,-116.43958)" />
+    <path
+       style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37868705;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 71.032886,46.651116 c -1.046906,3.685388 -0.489399,8.678251 0.673813,10.452677 l 4.476816,0.881985 c 0.745589,-3.269257 0.652241,-8.667242 -0.670814,-10.119787 z"
+       id="path4669"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+    <ellipse
+       style="opacity:1;fill:#8bf64b;fill-opacity:1;stroke:none;stroke-width:0.24588655;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4673"
+       cx="68.820236"
+       cy="56.802086"
+       rx="0.71641612"
+       ry="3.826627"
+       transform="matrix(0.99797631,-0.06358686,0.05934933,0.99823727,0,0)" />
+    <ellipse
+       transform="matrix(3.677617,-0.20091242,0.1852971,3.6784368,-210.22467,-96.949843)"
+       ry="0.26455754"
+       rx="0.049530122"
+       cy="44.295685"
+       cx="74.585121"
+       id="ellipse4687"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.01699961;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4705)" />
+    <path
+       style="opacity:0.46600001;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.37868705;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 71.032864,46.651879 c -0.609494,2.145575 -0.665496,4.720659 -0.384464,6.859473 l 5.312096,-4.906697 c -0.129571,-0.301204 -0.278442,-0.553121 -0.447272,-0.738476 z"
+       id="path4709"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:0.328;fill:#8bf64b;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter4732)"
+       d="m 14.472936,12.271192 0.416175,-0.315355 0.494213,0.315355 -0.350793,-1.045944 -0.05011,-2.0025979 0.07517,-0.451017 0.04176,-0.492779 -0.309032,0.609708 c -0.119074,-0.231407 -0.239217,-0.462261 -0.359141,-0.693229 l 0.09647,0.639446 0.114856,0.309835 0.03147,0.686067 0.05441,1.1957929 c 0.092,0.482877 -0.118283,0.78752 -0.255443,1.244718 z"
+       id="path4714"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccc"
+       transform="matrix(3.6831009,0,0,3.6831009,17.38767,14.420116)" />
+    <path
+       style="opacity:1;fill:none;fill-opacity:1;stroke:url(#linearGradient5088);stroke-width:0.56800002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 69.985427,20.917721 29.5845,34.571632 c -2.500701,2.966144 -2.146523,13.180989 1.151396,15.567705 3.297919,2.386712 40.5029,11.794045 46.955152,11.366597 0,0 31.544452,-19.990799 33.462812,-22.239837 1.91836,-2.249041 2.05929,-9.175565 -0.16283,-12.565138 C 98.080954,23.786113 86.172085,21.743793 69.985435,20.917721 Z"
+       id="path5078"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cczczccc" />
+    <path
+       sodipodi:nodetypes="cczczc"
+       inkscape:connector-curvature="0"
+       id="path5090"
+       d="m 16.854119,11.544792 c -0.218367,0.323189 -0.277831,0.414828 -0.338707,0.790357 0,0 8.004615,-4.9284579 8.52547,-5.5390949 0.520855,-0.610638 0.859797,-1.555817 0.540442,-2.609756 0,0 0.343764,1.655713 -0.794943,2.381837 -1.138708,0.726123 -7.932262,4.9766569 -7.932262,4.9766569 z"
+       style="opacity:0.22000002;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5106)"
+       transform="matrix(3.6831009,0,0,3.6831009,17.38767,14.420116)" />
+  </g>
+                            </svg>
+                            <span>Mobile Operation Module</span>
+                            </div>
+                            <div align="right" class="subhead" >
+                        <table id="ctrl" oncontextmenu="return false;" draggable="false" onmousedown="return false;" ontouchmove="return false;">
+                            <tr id="cbt">
+                                <td class="ctrl u" title="Minimize" onclick="shrink(document.getElementById('mydiv'));" ontouchstart="shrink(document.getElementById('mydiv'));">
+                                    <div class="label">
+                                      <svg class="u-Box" style="width:0.9rem;" viewbox="0 0 125 105" id="u-Box">
+                              <defs>
+                                  <linearGradient class="fadient" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                                      <stop offset="100%" style="stop-color:rgb(218,218,218);stop-opacity:1" />
+                                  </linearGradient>
+                                  <style>
+                                      /**.iconLabel {
+                                          filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
+                                      }/**/
+                                  </style>
+                              </defs>
+                              <rect x="0" y="85" width="100" height="25" class="iconLabel" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.5rem;stroke-linejoin:round;" transform="translate(15,-14)" />
+                              -
+                          </svg>
+                                    </div>
+                                    <div class="grad1"></div>
+                                    <div class="grad2"></div>
+                                </td>
+                                <td class="ctrl o" title="Maximize" onclick="blob(document.getElementById('mydiv'));" ontouchstart="blob(document.getElementById('mydiv'));">
+                                    <div class="label">
+                                      <svg class="a-Box" style="width:0.9rem;transform:translate(0,0.1rem);" viewbox="0 0 125 100" id="a-Box">
+                                              <defs>
+                                          <linearGradient class="fadient" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                      <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                                      <stop offset="100%" style="stop-color:rgb(218,218,218);stop-opacity:1" />
+                                      </linearGradient>
+                                      <mask id="cremaquemada" class="cremaquemada">
+                                          <rect x="-25" y="-20" width="150" height="150"fill="white" />
+                                          <rect x="30" y="40" width="40" height="20" fill="black" />
+                                      </mask>
+                                      <style>
+                                          /**.iconLabel {
+                                              filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
+                                          }/**/
+                                          </style>
+                                      </defs>
+                                      <rect x="0" y="10" width="100" height="80" class="iconLabel" mask="url(#cremaquemada)" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.5rem;stroke-linejoin:round;" transform="translate(15,-5)" />
+                                      <rect x="25" y="35" width="50" height="30" class="iconLabel" mask="url(#cremaquemada)" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.7rem;stroke-linejoin:round;" transform="translate(15,-5)" />
+                                      □
+                                      </svg>
+                                    </div>
+                                    <div class="grad1"></div>
+                                    <div class="grad2"></div>
+                                </td>
+                                <td class="ctrl x" title="Close" onclick="kill(document.getElementById('mydiv'));" ontouchstart="kill(document.getElementById('mydiv'));">
+                                    <div class="label">
+                                        <svg class="x-Box" style="width:0.9rem;transform:translate(0,0.05rem);" viewbox="0 0 135 115" id="x-Box">
+                                        <defs>
+                                           <linearGradient class="fadient" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                               <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                                               <stop offset="100%" style="stop-color:rgb(218,218,218);stop-opacity:1" />
+                                           </linearGradient>
+                                              <style>
+                                               /**.iconLabel {
+                                                   filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
+                                               }/**/
+                                           </style>
+                                         </defs>
+                                         <polygon class="iconLabel" points="-5,20 30,20 50,40 70,20 105,20 70,60 105,100 70,100 50,75 30,100 -5,100 30,60 -5,20" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.6rem;stroke-linejoin:round;" transform="translate(15,0)"></polygon>
+                                          X
+                                      </svg>
+                                    </div>
+                                    <div class="grad1"></div>
+                                    <div class="grad2"></div>
+                                </td>
+                            </tr>
+                        </table>
+                      </div>
+                     
+                    </div>
+                     <div id="size">
+                          <div class="top"></div>
+                          <div class="down"></div>
+                          <div class="left"></div>
+                          <div class="right"></div>
+                          <div class="topleft"></div>
+                          <div class="topright"></div>
+                          <div class="downleft"></div>
+                          <div class="downright"></div>
+                      </div>
+                    
+                    </div>
+                <div id="content">
+                    <ul id="base">
+                        <li class="log">
+                            Welcome to the Mobile Operation Module! 
+                        </li>
+                    </ul>
+                    <div id="enviar">
+                        <textarea type="text" id="bug"  placeholder="Input Here:" name="bug" autocomplete="off" autocorrect="off" autocapitalize="off"> </textarea>
+                        <button id="le-sendin" onclick="bugplusplus(true);" ontouchstart="bugplusplus(true);">Send</button>
+                    </div>
+               
+                </div>
+              </div>
+              <script>
+                // A little setting for accessibiliy reasons (why would anybody want to disable animations? :C)
+                var disableAnimations = window.matchMedia("(prefers-reduced-motion").matches;
+
+                // Disables Animations Based on user hating animation :CC
+                var blobLength = (disableAnimations)?1:251;
+
+
+                //disable drag on control buttons
+                //doesnt work, ehh ill fix it later, 
+                document.getElementById("cbt").addEventListener("mousedown", function(event){event.preventDefault();});
+                document.getElementById("cbt").addEventListener("touchmove", function(event){event.preventDefault();})
+                
+                
+                //Make the DIV element draggagle:
+                //stolen code from w3 schools. used as window engine.
+                document.getElementById("fade").style.backgroundPosition = ((document.getElementById("mydiv").getBoundingClientRect().x * 0.5 ).toString()) + "px" + ((document.getElementById("mydiv").getBoundingClientRect().y * 0.5 ).toString()) +"px";
+                dragElement(document.getElementById("mydiv"));
+                
+                
+                
+                
+                function dragElement(elmnt) {
+                  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                  if (document.getElementById(elmnt.id + "header")) {
+                    /* if present, the header is where you move the DIV from:*/
+                    var t = false;
+                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+                   document.getElementById(elmnt.id + "header").ontouchstart = theDrag;
+                  } else {
+                    /* otherwise, move the DIV from anywhere inside the DIV:*/
+                    elmnt.onmousedown = dragMouseDown;
+                    elmnt.ontouchstart = theDrag;
+                  }
+                
+                  function dragMouseDown(e) {
+                      if(t == true){
+                          t = false;
+                          return;
+                      }
+                       //  console.log('not Touch st345art event fired');
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    if (!elmnt.blob) {
+                        document.onmousemove = elementDrag;
+                /**/    document.ontouchmove = elementTouchDrag;
+                    }else{
+                        document.getElementById(elmnt.id + "header").style.cursor = "context-menu";
+                        
+                    }
+                    document.ontouchend = closeDragElement;/**/
+                  }
+                
+                  function theDrag(e) {
+                      t = true;
+                       e.preventDefault();
+                       //console.log('Touch start event fired');
+                    e = e || window.event;
+                    e.preventDefault();
+                   
+                    // get the mouse cursor position at startup:
+                    pos3 = e.touches[0].clientX;
+                    pos4 = e.touches[0].clientY;
+                   //console.log('Touch coordinates: ', e.touches[0].clientX, e.touches[0].clientY);
+                    // call a function whenever the cursor moves:
+                    document.ontouchmove = elementTouchDrag;
+                    document.ontouchend = closeDragElement;
+                  }
+                
+                  function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                    var fade = document.getElementById("fade");
+                    fade.style.backgroundPosition = ( ( elmnt.offsetLeft - pos1)*0.5) + "px " + ( (elmnt.offsetTop - pos2) * 0.5) + "px"; //fix paralax algorythm
+                    
+                  }
+                  function elementTouchDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.touches[0].clientX;
+                    pos2 = pos4 - e.touches[0].clientY;
+                    pos3 = e.touches[0].clientX;
+                    pos4 = e.touches[0].clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                    var fade = document.getElementById("fade");
+                    fade.style.backgroundPosition = ( ( elmnt.offsetLeft - pos1)*0.5) + "px " + ( (elmnt.offsetTop - pos2) * 0.5) + "px"; //fix paralax algorythm
+                    
+                  }
+                
+                  function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                        document.ontouchend = null;
+                    document.ontouchmove = null;
+                  }
+                }
+
+                // The orginal engine was stolen from W3's Tutorial on Draggable DIV Windows
+                // The resize code was stolen from a StackOverflow Question
+                // The graphics were stolen from Microsoft
+                // Everything else was made by hand with the help of the documentation
+                // I have cleaned everything up, but most of the engine is undocumented
+                // Yet, with that said,
+                
+                // !!! !   !     !!!! !!!!  !!! !!!   !!!! ! ! !!!! !!!  !   ! !!! !!! ! ! !!! !
+                // ! ! !   !     !  ! !      !   !      !  ! ! !     !   !   ! ! ! ! ! ! ! !   !
+                // !!! !   !     !  ! !!!    !   !      !  ! ! !!!!  !   ! ! ! ! ! !!  !!  !!! !
+                // ! ! !   !     !  ! !      !   !      !  ! !    !  !   ! ! ! ! ! ! ! ! !   ! 
+                // ! ! !!! !!!   !!!! !     !!!  !    !!!  !!! !!!!  !   !!!!! !!! ! ! ! ! !!! !
+                
+                var under = `
+                    <svg class="u-Box" style="width:0.9rem;" viewbox="0 0 125 105" id="u-Box">
+                        <defs>
+                            <linearGradient class="fadient" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgb(218,218,218);stop-opacity:1" />
+                            </linearGradient>
+                            <style>
+                                /**.iconLabel {
+                                    filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.4));
+                                }/**/
+                            </style>
+                        </defs>
+                        <rect x="0" y="85" width="100" height="25" class="iconLabel" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.5rem;stroke-linejoin:round;" transform="translate(15,-14)" />
+                        -
+                    </svg>
+                `;
+                
+                var upper = `
+                    <svg class="a-Box" style="width:0.9rem;transform:translate(0,0.1rem);" viewbox="0 0 125 100" id="a-Box">
+                            <defs>
+                                <linearGradient class="fadient" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:rgb(218,218,218);stop-opacity:1" />
+                                </linearGradient>
+                                <mask id="cremaquemada" class="cremaquemada">
+                                    <rect x="-25" y="-20" width="150" height="150"fill="white" />
+                                    <rect x="30" y="40" width="40" height="20" fill="black" />
+                                </mask>
+                            </defs>
+                        <rect x="0" y="10" width="100" height="80" class="iconLabel" mask="url(#cremaquemada)" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.5rem;stroke-linejoin:round;" transform="translate(15,-5)" />
+                        <rect x="25" y="35" width="50" height="30" class="iconLabel" mask="url(#cremaquemada)" fill="url(#fadient)" style="stroke:rgba(82,85,101,1);stroke-width:0.7rem;stroke-linejoin:round;" transform="translate(15,-5)" />
+                        □
+                    </svg>
+                `;
+                
+                var other = `
+                    <svg class="s-Box" id="s-Box" style="width:0.7rem;transform:translate(0,0.05rem);" viewBox="0 0 115 115">
+                        <defs>
+                            <linearGradient class="fadent" id="fadient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:rgba(255,255,255);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgba(218,218,218);stop-opacity:1" />
+                            </linearGradient>
+                            <mask id="horaporhora" class="horaporhora">
+                                <rect x="-25" y="-25" width="150" height="150" fill="white" />
+                                <rect x="29" y="49" width="23.5" height="23.5" fill="black" />
+                            </mask>
+                        </defs>
+                        <rect x="20" y="0" height="80" width="80" class="iconLabel" fill="url(#fadient)" mask="url(#horaporhora)" style="stroke:rgba(82,85,101,1);stroke-width:0.6rem;stroke-linejoin:round;" transform="translate(5,5)" />
+                        <rect x="0" y="20" height="80" width="80" class="iconLabel" fill="url(#fadient)" mask="url(#horaporhora)" style="stroke:rgba(82,85,101,1);stroke-width:0.6rem;stroke-linejoin:round;" transform="translate(5,5)" />
+                        <rect x="22.5" y="42.5" height="35" width="35" class="iconLabel" fill="url(#fadient)" mask="url(#horaporhora)" style="stroke:rgba(82,85,101,1);stroke-width:0.8rem;stroke-linejoin:round;" transform="translate(5,5)" />
+                        %
+                    </svg>
+                `;
+                
+                
+                var box = document.getElementById("mydiv");
+                var boxWrapper = document.getElementById("mydiv");
+                
+                const minWidth = 128;
+                const minHeight = 50;
+                
+                
+                var initX, initY, mousePressX, mousePressY, initW, initH, initRotate;
+                
+                function repositionElement(x, y) {
+                    boxWrapper.style.left = x + 'px';
+                    boxWrapper.style.top = y + 'px';
+                    fade.style.backgroundPosition = ( ( x)*0.5) + "px " + ( (y) * 0.5) + "px"; 
+                }
+                
+                function resize(w, h) {
+                   if(w!==false){ box.style.width = w + 'px';if(h!==false){box.style.height = h + 'px';}}else if(h!==false){
+                    box.style.height = h + 'px';if(w!==false){box.style.width = w + 'px';}}
+                }
+                
+                
+                
+                
+                
+                var rightMid = document.getElementById("size").getElementsByClassName("right")[0];
+                var leftMid = document.getElementById("size").getElementsByClassName("left")[0];
+                var topMid = document.getElementById("size").getElementsByClassName("top")[0];
+                var bottomMid = document.getElementById("size").getElementsByClassName("down")[0];
+                
+                var leftTop = document.getElementById("size").getElementsByClassName("topleft")[0];
+                var rightTop = document.getElementById("size").getElementsByClassName("topright")[0];
+                var rightBottom = document.getElementById("size").getElementsByClassName("downright")[0];
+                var leftBottom = document.getElementById("size").getElementsByClassName("downleft")[0];
+                
+                function resizeHandler(event, left = false, top = false, xResize = false, yResize = false, debug = false) {
+                    let wOrg = parseFloat(box.style.width);
+                    let hOrg = parseFloat(box.style.height);
+                    if(isNaN(wOrg) == true) {
+                        wOrg = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).getPropertyValue("width"));
+                    }
+                    if(isNaN(hOrg) == true) {
+                        hOrg = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).getPropertyValue("height"));
+                    }
+                    initX = boxWrapper.offsetLeft - 0;
+                    initY = boxWrapper.offsetTop - 0;
+                    mousePressX = event.clientX;
+                    mousePressY = event.clientY;
+                    initW  = box.offsetWidth - 15;
+                    initH  = box.offsetHeight - 15;
+                    var wex = false;
+                    var wey = false;
+                    let h = (document.getElementById("bug").style.height.legnth > 0)?parseFloat(document.getElementById("bug").style.height):parseFloat(window.getComputedStyle(document.getElementById("bug")).height);
+                    function eventMoveHandler(event) {
+                        if (debug && event.shiftKey) return -1;
+                        var wDiff = (event.clientX - mousePressX);
+                        var hDiff = (event.clientY - mousePressY);
+                        var newW = initW, newH = initH, newX = initX, newY = initY;
+                        var ew = newW;
+                        if (xResize) {
+                            if (left==true) {
+                               newW = initW - wDiff;
+                                if (newW <= minWidth){
+                                    newW = minWidth;
+                                    newX += (wOrg - minWidth);
+                                }
+                                
+                            } else {
+                                newW = initW + wDiff;
+                                if (newW < minWidth) {
+                                    newW = minWidth;
+                                }
+                            }
+                            
+                            if(left==true && newW > minWidth) newX +=  wDiff;
+                        }
+                
+                        if (yResize) {
+                            if (top) {
+                                newH = initH - hDiff;
+                                if (newH <= minHeight) {
+                                  newH = minHeight;
+                                  newY += (hOrg - minHeight)
+                                }
+                                
+                            } else {
+                               newH = initH + hDiff;
+                               if ((parseFloat(window.getComputedStyle(document.getElementById("content")).height) < 10) && !(newH >= parseFloat(window.getComputedStyle(document.getElementById("mydiv")).height))) {
+                                   newH = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).height);
+                                } else if (newH < minHeight) {
+                                  newH = minHeight;
+                                } 
+                            }
+                            if(top==true && newH > minHeight) newY += hDiff; 
+                        }
+                        if (debug && (newH != minHeight)) {
+                            document.getElementById("enviar").style.top = "calc(100% - "+ window.getComputedStyle(document.getElementById("enviar")).height +" - 0.8rem)";
+                            document.getElementById("bug").style.height = (parseFloat(h) + hDiff).toString() + "px";
+                            document.getElementById("content").style.height = "calc(100%  - 2rem -  " + window.getComputedStyle(document.getElementById("enviar")).height + " )";
+                        }
+                        resize(newW, newH);
+                        repositionElement(newX, newY);
+                    }
+
+                    window.addEventListener('mousemove', eventMoveHandler, false);
+                    window.addEventListener('mouseup', function eventEndHandler() {
+                        window.removeEventListener('mousemove', eventMoveHandler, false);
+                        window.removeEventListener('mouseup', eventEndHandler);
+                    }, false);
+                }
+                
+                
+                rightMid.addEventListener('mousedown', e => resizeHandler(e, false, false, true, false));
+                leftMid.addEventListener('mousedown', e => resizeHandler(e, true, false, true, false));
+                topMid.addEventListener('mousedown', e => resizeHandler(e, false, true, false, true));
+                bottomMid.addEventListener('mousedown', e => resizeHandler(e, false, false, false, true));
+                leftTop.addEventListener('mousedown', e => resizeHandler(e, true, true, true, true));
+                rightTop.addEventListener('mousedown', e => resizeHandler(e, false, true, true, true));
+                rightBottom.addEventListener('mousedown', e => resizeHandler(e, false, false, true, true));
+                leftBottom.addEventListener('mousedown', e => resizeHandler(e, true, false, true, true));
+
+                var log = console.log;
+                var info = console.info;
+                var warn = console.warn;
+                var error = console.error;
+                function loger(message) {
+                    document.getElementById("base").innerHTML +="<li class='log'>"+message+"</li>";
+                    document.getElementById("base").lastElementChild.scrollIntoView();
+                    return message;
+                }
+                function infoer (message) {
+                    
+                    document.getElementById("base").innerHTML +="<li class='logi'>"+message+"</li>";
+                    document.getElementById("base").lastElementChild.scrollIntoView();
+                    return message;
+                }
+                function warner (message) {
+                    
+                    document.getElementById("base").innerHTML +="<li class='logw'>"+message+"</li>";
+                    document.getElementById("base").lastElementChild.scrollIntoView();
+                    return message;
+                }
+                function errorer (message) {
+                    
+                    document.getElementById("base").innerHTML +="<li class='loge'>"+message+"</li>";
+                    document.getElementById("base").lastElementChild.scrollIntoView();
+                    return message;
+                }
+                console.log = function(message) {
+                    loger(message);
+                    log(message);
+                }
+                console.warn = function(message) {
+                    warner(message);
+                    warn(message);
+                }
+                console.error = function(message) {
+                    errorer(message);
+                    error(message);
+                }
+                console.info = function(message) {
+                    infoer(message);
+                    info(message);
+                }
+                
+                function resizeTouchHandler(event, left = false, top = false, xResize = false, yResize = false, debug = false) {
+                    let wOrg = parseFloat(box.style.width);
+                    let hOrg = parseFloat(box.style.height);
+                    if (debug && event.shiftKey) return -1;
+                    if(isNaN(wOrg) == true) {
+                        wOrg = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).getPropertyValue("width"));
+                    }
+                    if(isNaN(hOrg) == true){
+                        hOrg = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).getPropertyValue("height"));
+                    }
+                    initX = boxWrapper.offsetLeft - 0;
+                    initY = boxWrapper.offsetTop - 0;
+                    mousePressX = event.touches[0].clientX;
+                    mousePressY = event.touches[0].clientY;
+                    initW  = box.offsetWidth - 15;
+                    initH  = box.offsetHeight - 15;
+                    var wex = false;
+                    var wey = false;
+                    let h = (document.getElementById("bug").style.height.legnth > 0)?parseFloat(document.getElementById("bug").style.height):parseFloat(window.getComputedStyle(document.getElementById("bug")).height);
+                    function eventMoveHandler(event) {
+                        var wDiff = (event.touches[0].clientX - mousePressX);
+                        var hDiff = (event.touches[0].clientY - mousePressY);
+                        var newW = initW, newH = initH, newX = initX, newY = initY;
+                       var ew = newW;
+                        if (xResize) {
+                            if (left==true) {
+                               newW = initW - wDiff;
+                                if (newW <= minWidth){
+                                    newW = minWidth;
+                                    //console.log(wOrg);
+                                    newX += (wOrg - minWidth);
+                                }
+                            } else {
+                                newW = initW + wDiff;
+                                if (newW < minWidth) {
+                                  newW = minWidth;
+                                }
+                            }
+                            if(left==true && newW > minWidth){
+                                newX +=  wDiff;
+                            }
+                        }
+                
+                        if (yResize) {
+                            if (top) {
+                                newH = initH - hDiff;
+                                if (newH <= minHeight) {
+                                  newH = minHeight;
+                                  newY += (hOrg - minHeight) 
+                                }
+                                
+                            } else {
+                               newH = initH + hDiff;
+                                if (newH < minHeight) {
+                                  newH = minHeight;
+                                }
+                            }
+                            if(top==true && newH > minHeight){newY += hDiff;}
+                        }
+
+                        if (debug && (newH != minHeight)) {
+                            document.getElementById("enviar").style.top = "calc(100% - "+ window.getComputedStyle(document.getElementById("enviar")).height +" - 0.8rem)";
+                            document.getElementById("bug").style.height = (parseFloat(h) + hDiff).toString() + "px";
+                            document.getElementById("content").style.height = "calc(100%  - 2rem -  " + window.getComputedStyle(document.getElementById("enviar")).height + " )";
+                        }
+                
+                        resize(newW, newH);
+                        repositionElement(newX, newY);
+                    }
+                
+                    window.addEventListener('touchmove', eventMoveHandler, false);
+                    window.addEventListener('touchend', function eventEndHandler() {
+                        window.removeEventListener('touchmove', eventMoveHandler, false);
+                        window.removeEventListener('touchend', eventEndHandler);
+                    }, false);
+                }
+                
+                
+                rightMid.addEventListener('touchstart', e => resizeTouchHandler(e, false, false, true, false), false);
+                leftMid.addEventListener('touchstart', e => resizeTouchHandler(e, true, false, true, false), false);
+                topMid.addEventListener('touchstart', e => resizeTouchHandler(e, false, true, false, true), false);
+                bottomMid.addEventListener('touchstart', e => resizeTouchHandler(e, false, false, false, true), false);
+                leftTop.addEventListener('touchstart', e => resizeTouchHandler(e, true, true, true, true), false);
+                rightTop.addEventListener('touchstart', e => resizeTouchHandler(e, false, true, true, true), false);
+                rightBottom.addEventListener('touchstart', e => resizeTouchHandler(e, false, false, true, true), false);
+                leftBottom.addEventListener('touchstart', e => resizeTouchHandler(e, true, false, true, true), false);
+                document.getElementById("enviar").addEventListener('touchstart', e => resizeTouchHandler(e, false, false, false, true, true), false);
+                document.getElementById("enviar").addEventListener('mousedown', e => resizeHandler(e, false, false, false, true, true), false);
+                
+                function revive(element){
+                    element.style.display="block";
+                    if (element.blob) document.body.style.overflow = "hidden";
+                    setTimeout(function(){
+                        element.style.transform="perspective(" + (10 * ((getProportions(element,true) * (getProportions(element,false)) / 1000))).toString() +"cm) rotateX(0deg) rotateY(0deg) scale(1)";
+                        element.style.opacity="1";
+                    }, 1);
+                    document.getElementById("bug").focus();
+                }
+                
+                function kill(element, def = true){
+                    element.style.transitionDuration="0.25s";
+                    element.style.transform = "perspective(" + (10 * ((getProportions(element,true) * (getProportions(element,false)) / 1000))).toString() + "cm) rotateX(10deg) rotateY(5deg) scale(0.9)";
+                    element.style.opacity = "0";
+                    if (element.blob) document.body.style.overflow = "auto"; 
+                    setTimeout(function(){element.style.display="none";element.style.transform="perspective(10cm) rotateX(-10deg) rotateY(1deg) scale(0.9)";},501);
+                    if (def) document.getElementById("debugMenu").focus();
+                }
+                
+                document.onkeydown = function(evt) {
+                    evt = evt || window.event;
+                    var isEscape = false;
+                    if ("key" in evt) {
+                        isEscape = (evt.key === "Escape" || evt.key === "Esc");
+                    } else {
+                        isEscape = (evt.keyCode === 27);
+                    }
+                    if (isEscape) {
+                        kill(document.getElementById("mydiv")); exit.focus();
+                    }
+                };
+                
+                function bugplusplus(button = false) {
+                    if (button && document.getElementById("bug").value.replace(/\n/g,'').replace(/ /g,"").replace(/\\t/g,"").length > 0) infoer("<i style='display: inline-block; transform: skew(12deg, 0deg);'><b><u>You have executed:</u></b></i>&nbsp;&nbsp;" + document.getElementById("bug").value);
+                    var bugput = document.getElementById("bug").value;
+                    var i;
+                    var t;
+                    try {
+                        i = window.eval(bugput.toString());
+                        t = "n";
+                    } catch (e) {
+                        i = e;
+                        t = "e";
+                    }
+                    if (typeof i == "undefined") i = "";
+                    if (i.toString().replace(/\n/g,'').replace(/ /g,"").replace(/\\t/g,"").length > 0){
+                    if (t == "e") {
+                        errorer(i.toString());
+                    } else {
+                        loger(i.toString());
+                    }
+                    } 
+                    document.getElementById("bug").value = "";
+                }
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'F10' && !(event.key === "ShiftLeft" || event.key === "ShiftRight") && (key["ShiftLeft"] || key["ShiftRight"] || key["Shift"])) { event.preventDefault();revive(document.getElementById("mydiv"));}
+                });
+
+                document.getElementById("bug").addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter' && !(event.key === "ShiftLeft" || event.key === "ShiftRight") && !(key["ShiftLeft"] || key["ShiftRight"] || key["Shift"])) {
+                        if (document.getElementById("bug").value.replace(/\n/g,'').replace(/ /g,"").replace(/\\t/g,"").length > 0) infoer("<i style='display: inline-block; transform: skew(12deg, 0deg);'><b><u>You have executed:</u></b></i>&nbsp;&nbsp;" + document.getElementById("bug").value);
+                        try {bugplusplus();
+                            document.getElementById("bug").value = "";
+                            if (typeof document.getElementById("base").innerHTML.length > 0) document.getElementById("base").lastElementChild.scrollIntoView();
+                        } catch (e) {
+                        errorer("Failed Error: " + e);
+                        document.getElementById("bug").value = "";
+                        document.getElementById("base").lastElementChild.scrollIntoView();
+                        }
+                    } else if (event.key === 'Enter' && ((event.key === "ShiftLeft" || event.key === "ShiftRight") || (key["ShiftLeft"] || key["ShiftRight"] || key["Shift"]))) {
+
+                    }
+                });
+
+                var key = {};
+                var cooldown = true;
+                document.addEventListener("keydown", (event) => {
+                    key[event.key] = true;
+
+                    // Shortcuts
+                    if (key["Alt"] && key["f"] && cooldown) { // ALT+F = FULLSCREEN
+                        event.preventDefault();
+                        cooldown = false;
+                        blob(document.getElementById('mydiv'));
+                        setTimeout(function(){cooldown = true;},250);
+                    } else if (key["Alt"] && key["m"] && cooldown) { // ALT+M = MINIMIZE
+                        event.preventDefault();
+                        cooldown = false;
+                        shrink(document.getElementById('mydiv'));
+                        setTimeout(function(){cooldown = true;},250); 
+                    }
+                });
+                document.addEventListener("keyup", (event) => {
+                    key[event.key] = false;
+                });
+                
+                function setPosition(element, target){
+                        
+                        if (isNaN(parseFloat(element.style.top)) || isNaN(parseFloat(element.style.left))) {
+                            target.x = parseFloat(element.getBoundingClientRect().x);
+                            target.y = parseFloat(element.getBoundingClientRect().y);
+                        } else {
+                            target.x = parseFloat(element.style.left);
+                            target.y = parseFloat(element.style.top);
+                        }
+                        
+                         //Patch for Glitch 14.78125
+                        if (isNaN(parseFloat(element.style.width)) || isNaN(parseFloat(element.style.height))) {
+                            target.w = (parseFloat(element.getBoundingClientRect().right) - parseFloat(element.getBoundingClientRect().x)) - 15;
+                            target.h = (parseFloat(element.getBoundingClientRect().bottom) - parseFloat(element.getBoundingClientRect().y)) - 15;
+                        } else {
+                            target.w = parseFloat(element.style.width);
+                            target.h = parseFloat(element.style.height);
+                        }
+                        
+                }
+                
+                function blob(element) {
+                    var firstRun = false;
+                    if (typeof element.shrink == "undefined") {
+                        firstRun = false;
+                    }
+                    
+                    if (typeof element.blobTo == "undefined") {
+                        element.blobTo = {"x":0,"y":0,"w":0,"h":0};
+                        if (typeof element.blob == "undefined") element.blob = false;
+                        setPosition(element, element.blobTo);
+                        firstRun = true;
+                        element.toBlob = false;
+                    }
+
+
+                    if(typeof element.blob == "undefined"){
+                        element.blob = false;
+                    }
+                    
+                    if (element.blob == true) {
+                        element.toBlob = false;
+                        if (element.shrink) document.getElementById("enviar").style.display = "none";
+                        document.body.style.overflow="auto";
+                        element.style.top = element.blobTo.y.toString() + "px";
+                        element.style.left = element.blobTo.x.toString() + "px";
+                        element.style.width= element.blobTo.w.toString() + "px";
+                        element.style.height= element.blobTo.h.toString() + "px";
+                        document.getElementById("cbt").getElementsByClassName("o")[0].getElementsByClassName("label")[0].innerHTML = upper;
+                        //round glitch is unreplated to position just add css to unblob
+                        document.getElementById("size").style.display = "block";
+                        element.blob=false;
+                        document.getElementById(element.id + "header").style.cursor = "all-scroll";
+                    }else{
+                         if (!element.shrink){
+                             setPosition(element, element.blobTo);
+                         } else { 
+                            if (!element.toBlob) element.blobTo = JSON.parse(JSON.stringify(element.shrinkTo));
+                            setPosition(element, element.shrinkTo);
+                            element.toBlob = true;
+                            element.style.borderRadius="0.4rem";
+                            element.shrink = false;
+                            document.getElementById("cbt").getElementsByClassName("u")[0].getElementsByClassName("label")[0].innerHTML = under;
+                         }
+                         document.getElementById("enviar").style.display = "flex";
+                        document.getElementById("size").style.display = "none";
+                        element.style.top = "0px";
+                        element.style.left =  "calc(0px - 0.4rem)";                        
+                        document.body.style.overflow="hidden";
+                        element.style.width="calc(100vw)";
+                        element.style.height="calc(100vh - 0.4rem)";
+                        document.getElementById("cbt").getElementsByClassName("o")[0].getElementsByClassName("label")[0].innerHTML = other;
+                        element.blob=true;
+                        document.getElementById(element.id + "header").style.cursor = "context-menu";
+                    }
+                }
+                
+                
+                function shrink(element) {
+                    var firstRun = false;
+                    if(typeof element.shrink == "undefined"){//undefined safeguard
+                        element.shrink = false;
+                        
+                        //i have no idea what this was meant for
+                        // HEY THAT IS NOT GOOD, ESPECIALLY SINCE YOU WILL SOON MAKE THE DOCUMENTATION FOR THIS
+                        var i =  (parseFloat(parseFloat(window.screen.height) - parseFloat(element.style.height)));
+                        if (isNaN(i)) i = 20;
+                        element.shrinkTo = {"x":10,"y":i,"w":100,"h":0};
+                        firstRun = true;
+                    }
+                    
+                    if(typeof element.blob == "undefined"){//another day, another safeguard
+                        element.blob = false;
+                    }
+                    
+                    
+                    if(element.shrink == true){//maximize 
+                        document.getElementById("enviar").style.display = "flex";
+                        //set distortion variables 
+                        if(element.toBlob) {
+                            // You may not want to find the hidden easter eggs left here; they will shock you.
+                            
+                        }
+                        //change actual window state to unshrunken
+                
+                        element.style.transitionDuration="0s";
+                        //set actual look
+                        element.style.borderBottom="inherit";
+                        element.style.borderRadius="0.4rem";
+                        element.style.height=element.shrinkTo.h.toString() + "px";
+                        let cacheBar = {
+                            "x": 0,
+                            "y": 0,
+                            "w": 0,
+                            "h": 0
+                        };
+                        cacheBar.x = element.shrinkTo.x;
+                        cacheBar.y = element.shrinkTo.y;
+                        cacheBar.w = element.shrinkTo.w;
+                        cacheBar.h = element.shrinkTo.h;
+                        element.style.transform="translate(0,0) perspective(10cm) rotateX(0deg) rotateY(0deg) scale(0.9)";
+                        setPosition(element, element.shrinkTo);
+                        
+                   
+                        // element.style.clipPath="none";
+                        //enableresizing
+                        document.getElementById("size").style.display = "block";
+                        //change icon
+                        
+                        //change to normal size then transform to former location
+                        
+                        element.style.transitionDuration="0s";
+                        element.style.opacity="0.5";
+                        if(element.toBlob){
+                            element.style.top = "0px";
+                            element.style.left =  "calc(0px - 0.4rem)";
+                            //disable window drag here please
+                            document.getElementById("cbt").getElementsByClassName("u")[0].getElementsByClassName("label")[0].innerHTML = under;
+                            
+                            //todo:
+                            document.getElementById("cbt").getElementsByClassName("o")[0].getElementsByClassName("label")[0].innerHTML = other;
+                            
+                            element.blob=true;
+                            document.getElementById(element.id + "header").style.cursor = "context-menu";
+                            document.getElementById("size").style.display = "none";
+                            document.body.style.overflow="hidden";
+                            document.body.style.overflow="hidden";
+                            //if vertical scroll: minus width by scrollbar
+                            element.style.width="calc(100vw)";
+                            
+                            //is horizontal scroll: minus height by scrollbar
+                            element.style.height="calc(100vh - 0.4rem)";
+                        }else{
+                             element.style.top=cacheBar.y.toString() + "px";
+                            element.style.left=cacheBar.x.toString() + "px";
+                            element.style.width=cacheBar.w.toString() + "px";
+                        }
+                        if(element.toBlob){
+                            element.style.transform=distort(((parseFloat(element.shrinkTo.x)-(parseFloat(getComputedStyle(document.documentElement).fontSize)*0.4))-(getProportions(element,true)/2)+65),(parseFloat(element.shrinkTo.y)-parseFloat(element.style.top)-(getProportions(element,false)/2)+65),getProportions(element, true),getProportions(element, false), parseFloat(element.shrinkTo.w), parseFloat(element.shrinkTo.h));                                                                                                                                                                                                                                                  
+                        }else{                                                                                                                                                                                                                                                                                          
+                            element.style.transform=distort(((parseFloat(element.shrinkTo.x)-parseFloat(element.style.left))-(getProportions(element,true)/4)),(parseFloat(element.shrinkTo.y)-parseFloat(element.style.top)-(getProportions(element,false)/4)),getProportions(element, true),getProportions(element, false), parseFloat(element.shrinkTo.w), parseFloat(element.shrinkTo.h));
+                    }
+                        setTimeout(function(){
+                            document.getElementById("cbt").getElementsByClassName("u")[0].getElementsByClassName("label")[0].innerHTML = under;
+                            element.style.transitionDuration="0.25s";
+                            element.style.opacity="1";
+                            //element.style.opacity="1";
+    
+                            element.style.transform="translate(0,0) perspective(10cm) rotateX(0deg) rotateY(0deg) scale(1)"; //change perspective algo
+    
+                            
+                            setTimeout(function(){
+                
+                            element.style.transitionDuration="0s";
+                            element.style.transform="translate(0,0) perspective(10cm) rotateX(0deg) rotateY(0deg) scale(1)";
+                            
+                            //IF fullscreen THEN DO fullscreen_styles
+                            if (element.blob) {
+
+                            }
+                       
+                        }, blobLength);
+                     
+                     }, 5);
+                        
+                   //     }, 1)
+                        
+                        //read shrinkTo location and do calculations
+                        //let cachebar = {
+                            
+                            
+                       // };
+                        //make window visible and disable distortion
+                        
+                        element.shrink=false;
+                    }
+                    else
+                    {
+                        //minimize
+                        //disable resizing
+                        document.getElementById("size").style.display = "none"; //The size variable will need to be updated if larg-scale implamentation be added
+                        let cacheBar = {
+                            "x": 0,
+                            "y": 0,
+                            "w": 0,
+                            "h": 0
+                        };
+                        
+                        //config cachebar
+                        cacheBar.x = element.shrinkTo.x - parseFloat(element.style.left);
+                        cacheBar.y = element.shrinkTo.y - parseFloat(element.style.top);
+                        cacheBar.w = element.shrinkTo.w - parseFloat(element.style.width);
+                        cacheBar.h = element.shrinkTo.h - parseFloat(element.style.height);
+                        if(isNaN(parseFloat(element.style.top)) || isNaN(parseFloat(element.style.left))){//assume user has neither moved or resized the window
+                                cacheBar.x = element.shrinkTo.x - ((parseFloat(element.getBoundingClientRect().right) - parseFloat(element.getBoundingClientRect().x)) - 30); //the "15" gitch appears again. so odd, and it is technically the "14.78125" glitch so odd
+                                cacheBar.y = element.shrinkTo.y -  ((parseFloat(element.getBoundingClientRect().bottom) - parseFloat(element.getBoundingClientRect().y)) - 30);
+                            }else{
+                                 cacheBar.x = element.shrinkTo.x - parseFloat(element.style.left);
+                                 cacheBar.y = element.shrinkTo.y - parseFloat(element.style.top);
+                                 
+                             }
+                             if(isNaN(parseFloat(element.style.width)) || isNaN(parseFloat(element.style.height))){//assume user has neither moved or resized the window
+                                cacheBar.w = element.shrinkTo.w - ((parseFloat(element.getBoundingClientRect().right) - parseFloat(element.getBoundingClientRect().x)) - 15); //the "15" gitch appears again. so odd, and it is technically the "14.78125" glitch so odd
+                                cacheBar.h = element.shrinkTo.h- ((parseFloat(element.getBoundingClientRect().bottom) - parseFloat(element.getBoundingClientRect().y)) - 15);
+                            }else{
+                                 cacheBar.w =element.shrinkTo.w -  parseFloat(element.style.width);
+                                 cacheBar.h =element.shrinkTo.h -  parseFloat(element.style.height);
+                                 
+                             }
+                        if (firstRun) {
+                            if (isNaN(parseFloat(element.style.top)) || isNaN(parseFloat(element.style.left))) {
+                                cacheBar.x = (parseFloat(element.getBoundingClientRect().x) * -1) - 60;
+                                element.shrinkTo.y = parseFloat(window.innerHeight) - 30;
+                                cacheBar.y = parseFloat(window.innerHeight) - parseFloat(element.getBoundingClientRect().y) - 60;
+                            } else {
+                                cacheBar.x = ((parseFloat(element.style.left) - 0) * -1) - 60;
+                                
+                                
+                                element.shrinkTo.y = parseFloat(window.innerHeight) - 30;
+                                
+                                cacheBar.y = parseFloat(window.innerHeight) - parseFloat(element.style.top) - 60;
+                            }
+                            element.shrinkTo.x = 10;
+                             cacheBar.h = getProportions(element, false);
+                             cacheBar.w = (parseFloat(getComputedStyle(document.documentElement).fontSize)*15);
+                             element.shrinkTo.w = cacheBar.w;
+                             element.shrinkTo.h = cacheBar.h;
+                        }
+                     if(element.blob == true){
+                        element.blob = false;
+                        element.style.cursor="context-menu";
+                        document.getElementById("cbt").getElementsByClassName("o")[0].getElementsByClassName("label")[0].innerHTML = upper;
+                        element.toBlob = true; 
+                     }
+                        element.style.transitionDuration="0.25s";
+                         element.style.transform = distort((parseFloat(cacheBar.x) - ((getProportions(element,true) - parseFloat(cacheBar.w))/8) ), (parseFloat(cacheBar.y) - ((getProportions(element,false) - parseFloat(cacheBar.h))/8) ) , getProportions(element, true),getProportions(element,false) ,element.shrinkTo.w, element.shrinkTo.h);
+                        if (element.toBlob) element.style.transform = distort((element.shrinkTo.x  - ((getProportions(element,true) )/ 2) + 65),(element.shrinkTo.y - ((getProportions(element,false) )/2) + 65) , getProportions(element, true),getProportions(element,false) ,element.shrinkTo.w, element.shrinkTo.h);
+                         element.style.opacity="0.5";
+                        //distort window
+                        //change icon
+                        // you don't wanna continue forth
+                        document.getElementById("cbt").getElementsByClassName("u")[0].getElementsByClassName("label")[0].innerHTML = other;
+                        //shrink actual window after animation completes
+                        setTimeout(function(){
+                            if(element.blob || element.toBlob){
+                                element.style.width=element.blobTo.w.toString() + "px";
+                                element.style.height=element.blobTo.w.toString() + "px";
+                            }
+                        element.style.transitionDuration="0s";
+                        element.style.borderBottom="none";
+                        element.style.borderRadius="0.4rem 0.4rem 0 0";
+                        // Presenting: The Coder's Very Disguised Fetish
+                        // Actually, the internal names would give it away very quickly.
+                        if (element.blob) {
+                            // console.error("You are an idiot.");
+                        }
+                        cacheBar.x = element.shrinkTo.x;
+                        cacheBar.y = element.shrinkTo.y;
+                        cacheBar.w = element.shrinkTo.w;
+                        setPosition(element, element.shrinkTo);
+                            if(firstRun && (isNaN(parseFloat(element.style.top)) || isNaN(parseFloat(element.style.left))))
+                        {
+                            //contributers, any fix for this bug that does not involve patching the symntoms would be very much appreciated!! :>
+                            element.shrinkTo.y -= 942;
+                            element.shrinkTo.x -= 2;
+                        }
+                        element.style.height="1rem";
+                        element.style.top=cacheBar.y.toString() + "px";
+                        element.style.left=cacheBar.x.toString() + "px";
+                        element.style.width = cacheBar.w.toString() + "px";
+                        element.style.opacity="1";
+                        element.style.transform="translate(0,0) perspective(10cm) rotateX(0deg) rotateY(0deg) scale(1)";
+                        
+                        document.getElementById("enviar").style.display = "none";
+                        
+                            
+                }, blobLength);
+                        //dont apply crop, only state the window is shrunken. crop glitches up the shadow
+                        element.shrink=true
+                    }
+                }
+            
+                
+                
+                //wait a minute... why not make a distortion function so that i dont have to worry about updating the algorythm???
+                //x,y = transform how much
+                //h,w = the item in question's size
+                //dl, dw = second width you are transforming to 
+                //dx, dy = second x and y that you want to transfer to??? maybe????? idkkkkk
+                function distort(x = 32, y = 32, w = 128, h = 256, dw = w, dh = h, dx = 0, dy = 0) {
+                        var i = "translate( "+ (x).toString() +"px,"+ ( y).toString() +"px) perspective(" + (5 + ((w * h) / 50000)).toString() + "cm) rotateX(" + ( y / 100).toString() + "deg) rotateY(" + (x / 100).toString() +"deg) scale(" + (dw / w).toString() + ")";
+                    //console.log(i);
+                        return i;
+                }
+    
+                //i got lazy of pasting the proportion detector function over and over so here's something
+    
+                function getProportions(element, isWidth) {
+                    var target = {"w":0,"h":0};
+                    if(isNaN(parseFloat(element.style.width)) || isNaN(parseFloat(element.style.height))){//assume user has neither moved or resized the window
+                            target.w = (parseFloat(element.getBoundingClientRect().right) - parseFloat(element.getBoundingClientRect().x)) - 15; //the "15" gitch appears again. so odd, and it is technically the "14.78125" glitch so odd
+                            target.h = (parseFloat(element.getBoundingClientRect().bottom) - parseFloat(element.getBoundingClientRect().y)) - 15;
+                        }else{
+                            target.w = parseFloat(element.style.width);
+                            target.h = parseFloat(element.style.height);
+                        }
+                        if (isWidth) return target.w; else return target.h;
+                }
+
+                function cleanMOM() {
+                    document.getElementById("base").innerHTML = "";
+                }
+
+                function MOMTUTORIAL(mobile = 0) {
+                    console.info("You can enter \"cleanMOM();\" without quotes to clean the console and remove any messages.");
+                    console.info("You can enter \"MOMTUTORIAL(1);\" without quotes for the mobile tutorial of the MOM.");
+                    if (mobile != 1) {
+                        console.info("Press Escape to close the MOM, press Shift + F10 to activate the MOM.");
+                        console.info("There are also some shortcuts. Alt + M for minimizing the MOM and Alt + F for fullscreen.");
+                        console.info("You may notice that pressing enter will execute the message typed. The behavior of the MOM is to execute the typed mesage when you press enter.");
+                        console.info("Press Shift + Enter to enter a new line. To select text, press Shift while selecting anything. Dragging on the text area without holding shift will resize the input area.");
+                        console.info("Simply drag on the window to move and resize the window.");
+                    } else {
+                        console.info("Press the X Button to close the MOM. If implamented properly, the copypaster should have implamented a button to activate the MOM.");
+                        console.info("The other buttons works as well. The button with the square icon makes the window fullscreen when pressed, the button wiht an icon that looks like an underscore (_) minimizes your window.");
+                        console.info("Drag on the Window's borders to resize the window. Drag on the window's title to move the window.");
+                        console.info("Make sure the shift key is activated when typing a new line. Dragging on the text area when you are not typing will resize the textarea. ");
+                    }
+                    console.info("The MOM uses the default JavaScript engine; this is similar to an actual console, except the console functions have been modified to display on the MOM. Use the commands without the console prefix for the unmodified commands.");
+                    console.info("Thank you for using the Mobile Operation Module. ");
+                }
+
+                kill(document.getElementById("mydiv"), false);
+                console.info("The MOM has been loaded. Enter \"MOMTUTORIAL();\" without quotes for a tuorial.");
+            </script>
+        </footer>
+    </body>
+</html>
